@@ -3,6 +3,7 @@
 import http from "node:http"; // Uses 'node:' to identify intern modules
 import { bodyConstructor } from "./middlewares/bodyConstructor.js";
 import { Database } from "./database/database.js";
+import { randomUUID } from "node:crypto";
 
 const database = new Database();
 
@@ -21,7 +22,7 @@ const server = http.createServer(async (req, res) => {
     const { name, email } = req.body;
 
     const user = {
-      id: 1,
+      id: randomUUID(),
       name,
       email,
     };
